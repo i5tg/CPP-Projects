@@ -1,7 +1,8 @@
-//Bank simulator Beta
-
-#include <iostream>
+#include <iostream> 
 #include <string>
+#include <thread>
+#include <chrono>
+
 
 int balance = 1000;
 
@@ -14,7 +15,7 @@ int main() {
     std::cout << "Welcome to Bank simulator, here you can experience bank simulation. (Author: iostream.inc / i5tg on discord)" << std::endl;
     std::cout << " " << std::endl;
 
-    bool running = true;  
+    bool running = true;
 
     while (running) {
         DisplayMenu();
@@ -28,7 +29,7 @@ int main() {
             int val;
             std::cout << "How much money would you like to deposit? " << std::endl;
             std::cin >> val;
-            balance += val; 
+            balance += val;
             std::cout << "Your new balance is " << balance << std::endl;
         }
         else if (input == 3) {
@@ -36,7 +37,7 @@ int main() {
             std::cout << "How much would you like to withdraw?" << std::endl;
             std::cin >> with;
             if (with <= balance) {
-                balance -= with;  
+                balance -= with;
                 std::cout << "Withdrew " << with << ". Your new balance is " << balance << std::endl;
             }
             else {
@@ -45,7 +46,8 @@ int main() {
         }
         else if (input == 4) {
             std::cout << "Thank you for using the Bank Simulator!" << std::endl;
-            running = false;  
+            std::this_thread::sleep_for(std::chrono::seconds(10));
+            running = false;
         }
         else {
             std::cout << "Invalid option! Please try again." << std::endl;
